@@ -1,0 +1,193 @@
+:root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --completed: #22c55e;
+            --bg: #051b31; 
+          
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
+
+        .roadmap-container {
+            position: relative;
+            width: 800px;
+            height: 1200px; /* Tall enough to fit the zig-zag */
+            margin-top: 50px;
+        }
+
+        /* The SVG Path Background */
+        .svg-connector {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.904);
+            stroke-width: 6;
+            stroke-dasharray: 10;
+        }
+
+        .progress-path {
+            stroke: var(--primary);
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            transition: stroke-dashoffset 1s ease-in-out;
+            filter: drop-shadow(0 0 8px var(--primary));
+        }
+
+        /* Step Styling */
+        .step {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .node {
+            width: 60px;
+            height: 60px;
+             background: #1a1f26; 
+            border: 3px solid #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .step.active .node {
+            border-color: var(--primary);
+            background: var(--bg);
+            box-shadow: 0 0 25px var(--primary);
+            transform: scale(1.2);
+        }
+
+        .step.completed .node {
+            background: var(--completed);
+            border-color: var(--completed);
+            color: white;
+        }
+
+        .label {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            white-space: nowrap;
+        }
+
+        /* Step Positions (Zig-Zag coordinates) */
+        .s1 { top: 50px; left: 50%; }
+        .s2 { top: 200px; left: 20%; }
+        .s3 { top: 350px; left: 80%; }
+        .s4 { top: 550px; left: 30%; }
+        .s5 { top: 750px; left: 70%; }
+        .s6 { top: 950px; left: 20%; }
+        .s7 { top: 1100px; left: 50%; }
+
+        /* Floating Controls */
+        .nav-panel {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+             background: rgba(255,255,255,0.05); 
+            backdrop-filter: blur(15px);
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        .btn {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover:not(:disabled) { color: var(--primary); transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.2; }
+
+/* Update this in your CSS */
+.progress-path {
+    stroke: var(--primary);
+    stroke-dasharray: 1000; /* This matches pathLength in JS */
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 0.8s ease-in-out; /* Smooth movement */
+    filter: drop-shadow(0 0 8px var(--primary));
+    pointer-events: none; /* Ensures the path doesn't block clicks on nodes */
+}
+
+
+
+
+
+:root {
+    --primary: #00f2fe;
+    --secondary: #4facfe;
+    --completed: #22c55e;
+    --bg: #051b31; 
+}
+
+/* Ensure the SVG doesn't block clicks on the nodes below it */
+/* .svg-connector { */
+    /* pointer-events: none; */
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* z-index: 1; */
+    /* fill: none; */
+    /* stroke: rgba(241, 236, 236, 0.1); */
+    /* stroke-width: 6; */
+/* } */
+
+.progress-path {
+    stroke: var(--primary);
+    /* Transition creates the "moving" effect when currentStep changes */
+    transition: stroke-dashoffset 0.8s ease-in-out;
+    filter: drop-shadow(0 0 8px var(--primary));
+}
+
+/* Node styling for interaction */
+.node {
+    cursor: pointer;
+    pointer-events: auto; /* Re-enable clicks on the circles */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.node:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--primary);
+}

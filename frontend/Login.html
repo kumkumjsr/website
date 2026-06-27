@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study | Access Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #00f2fe;
+            --accent: #4facfe;
+            --bg: #030b14;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0a2d4d 0%, #030b14 100%);
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(79, 172, 254, 0.15) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(10%, 10%); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            width: 850px;
+            height: 550px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 50px 80px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        /* Overlay Container for Sliding effect */
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .login-container { left: 0; width: 50%; z-index: 2; }
+        .register-container { left: 0; width: 50%; opacity: 0; z-index: 1; }
+
+        /* When active class is added via JS */
+        .container.active .login-container { transform: translateX(100%); opacity: 0; }
+        .container.active .register-container { transform: translateX(100%); opacity: 1; z-index: 5; }
+
+        /* Styling for the Inner Forms */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary); font-weight: 700; margin-bottom: 20px; font-size: 2rem; }
+
+        .input-box {
+            width: 100%;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.4);
+        }
+
+        input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            padding: 12px 15px 12px 45px;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); background: rgba(255,255,255,0.1); }
+
+        button {
+            margin-top: 20px;
+            width: 150px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border: none;
+            border-radius: 50px;
+            color: #030b14;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 254, 0.4); }
+
+        /* Toggle Panel Styling (The Blue Side) */
+        .toggle-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            z-index: 10;
+        }
+
+        .container.active .toggle-container { transform: translateX(-100%); }
+
+        .toggle {
+            height: 100%;
+            background: linear-gradient(135deg, #0a2d4d, #16213e);
+            color: white;
+            position: relative;
+            left: -100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .container.active .toggle { transform: translateX(50%); }
+
+        .toggle-panel {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 30px;
+            text-align: center;
+            top: 0;
+            transition: all 0.6s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        .toggle-left { transform: translateX(-200%); }
+        .container.active .toggle-left { transform: translateX(0); }
+
+        .toggle-right { right: 0; transform: translateX(0); }
+        .container.active .toggle-right { transform: translateX(200%); }
+
+        .toggle-panel button { background: transparent; border: 2px solid white; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="blob"></div>
+
+    <div class="container" id="container">
+        <div class="form-container register-container">
+            <form onsubmit="return false">
+                <h1>Create Account</h1>
+                <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="regUser" placeholder="Username">
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="regPass" placeholder="Password">
+                </div>
+                <button onclick="auth('register')">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="form-container login-container">
+            <form onsubmit="return false">
+                <h1>Sign In</h1>
+                <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="logUser" placeholder="Username">
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="logPass" placeholder="Password">
+                </div>
+                <button onclick="auth('login')">Login</button>
+            </form>
+        </div>
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your details to continue your learning journey.</p>
+                    <button id="loginBtn">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>New Here?</h1>
+                    <p>Register and start tracking your quiz progress today!</p>
+                    <button id="registerBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginBtn = document.getElementById('loginBtn');
+
+        // Logic for sliding animation
+        registerBtn.addEventListener('click', () => container.classList.add("active"));
+        loginBtn.addEventListener('click', () => container.classList.remove("active"));
+
+        // Your existing Auth Logic
+        async function auth(type) {
+            const user = document.getElementById(type === 'register' ? 'regUser' : 'logUser').value;
+            const pass = document.getElementById(type === 'register' ? 'regPass' : 'logPass').value;
+
+            if (!user || !pass) return alert("Please fill all fields");
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/${type}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: user, password: pass })
+                });
+
+                const data = await response.json();
+
+                if (type === 'login') {
+                    if (data.success) {
+                        localStorage.setItem('loggedInUser', data.username);
+                        localStorage.setItem('roadmapStep', 2);
+                        window.location.href = "roadmap.html";
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert(data.message);
+                    if(data.success) container.classList.remove("active");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Server is not responding. Make sure app.js is running!");
+            }
+        }
+    </script>
+</body>
+</html>

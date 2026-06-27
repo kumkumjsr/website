@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mathematics Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #388E3C;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #4CAF50, #388E3C);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #4CAF50;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>Mathematics Hub</h1>
+    <p>Explore the beauty of numbers, patterns, and problem-solving.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#branches">Branches</a>
+    <a href="#mathematicians">Famous Mathematicians</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What is Mathematics?</h2>
+    <p>
+      Mathematics is the study of numbers, shapes, structures, and patterns. 
+      It provides the language of science, technology, and logic, 
+      helping us understand the universe and solve real-world problems.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick Math Facts</h2>
+    <ul>
+      <li>Zero was first used as a number in ancient India.</li>
+      <li>Pi (π) is an irrational number that never ends or repeats.</li>
+      <li>The Fibonacci sequence appears in nature, art, and architecture.</li>
+      <li>Mathematics is essential in fields like physics, engineering, and economics.</li>
+      <li>Algebra originated from the works of Persian mathematician Al-Khwarizmi.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn Mathematics Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/2SpuBqvNjHI" 
+          title="Math Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/OmJ-4B-mS-Y" 
+          title="Math Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/aircAruvnKk" 
+          title="Math Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Branches Section -->
+  <section id="branches">
+    <h2>Branches of Mathematics</h2>
+    <p>
+      Mathematics includes diverse branches such as arithmetic, algebra, geometry, 
+      calculus, statistics, and number theory. Each branch explores unique aspects 
+      of logic, problem-solving, and abstract reasoning.
+    </p>
+  </section>
+
+  <!-- Famous Mathematicians Section -->
+  <section id="mathematicians">
+    <h2>Famous Mathematicians</h2>
+    <p>
+      Great minds like Euclid, Isaac Newton, Carl Gauss, and Ada Lovelace 
+      have advanced mathematics and its applications. Their contributions 
+      continue to inspire innovation and discovery across disciplines.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Mathematics Hub | Designed for math enthusiasts</p>
+  </footer>
+</body>
+</html>

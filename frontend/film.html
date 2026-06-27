@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Film Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #FF5722;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #E64A19;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #FF5722, #E64A19);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #FF5722;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #FF5722;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>Film Hub</h1>
+    <p>Explore the magic of cinema, genres, and legendary filmmakers.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#genres">Genres</a>
+    <a href="#directors">Famous Directors</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What is Film?</h2>
+    <p>
+      Film is a powerful medium that combines storytelling, visuals, and sound 
+      to entertain, inspire, and educate. From silent movies to modern blockbusters, 
+      cinema reflects culture, imagination, and human creativity.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick Film Facts</h2>
+    <ul>
+      <li>The first motion picture camera was invented in the late 19th century.</li>
+      <li>Hollywood is considered the global center of film production.</li>
+      <li>The Academy Awards (Oscars) began in 1929.</li>
+      <li>India produces the largest number of films annually, mainly through Bollywood.</li>
+      <li>Silent films relied on exaggerated acting and title cards to tell stories.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn About Films Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/9xwazD5SyVg" 
+          title="Film Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
+          title="Film Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+          title="Film Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genres Section -->
+  <section id="genres">
+    <h2>Film Genres</h2>
+    <p>
+      Films are categorized into genres such as action, comedy, drama, horror, 
+      science fiction, and romance. Each genre has unique storytelling techniques 
+      and appeals to different audiences.
+    </p>
+  </section>
+
+  <!-- Famous Directors Section -->
+  <section id="directors">
+    <h2>Famous Directors</h2>
+    <p>
+      Legendary directors like Alfred Hitchcock, Steven Spielberg, Satyajit Ray, 
+      and Akira Kurosawa have shaped cinema with their unique visions. 
+      Their films continue to inspire generations of filmmakers and audiences.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Film Hub | Designed for movie lovers</p>
+  </footer>
+</body>
+</html>

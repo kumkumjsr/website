@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>History Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #5a0000;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #8B0000, #5a0000);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #8B0000;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #8B0000;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>History Hub</h1>
+    <p>Discover the stories of civilizations, revolutions, and human progress.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#ancient">Ancient Civilizations</a>
+    <a href="#modern">Modern History</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What is History?</h2>
+    <p>
+      History is the study of past events, people, and societies. 
+      It helps us understand how civilizations rose and fell, 
+      how revolutions shaped nations, and how human progress 
+      has transformed the world we live in today.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick History Facts</h2>
+    <ul>
+      <li>The Roman Empire lasted for over 500 years, influencing law, architecture, and culture.</li>
+      <li>The Industrial Revolution began in the 18th century and transformed economies worldwide.</li>
+      <li>World War II (1939–1945) involved more than 30 countries and reshaped global politics.</li>
+      <li>The Great Wall of China was built over centuries to protect against invasions.</li>
+      <li>The printing press, invented in the 15th century, revolutionized knowledge sharing.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn History Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/9xwazD5SyVg" 
+          title="History Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
+          title="History Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+          title="History Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ancient Civilizations Section -->
+  <section id="ancient">
+    <h2>Ancient Civilizations</h2>
+    <p>
+      Ancient civilizations like Mesopotamia, Egypt, Greece, and Rome 
+      laid the foundations of modern society. They contributed to 
+      writing systems, governance, philosophy, and monumental architecture.
+    </p>
+  </section>
+
+  <!-- Modern History Section -->
+  <section id="modern">
+    <h2>Modern History</h2>
+    <p>
+      Modern history covers events from the Renaissance to the present day. 
+      It includes revolutions, world wars, independence movements, and 
+      technological advancements that continue to shape our lives.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 History Hub | Designed for learners</p>
+  </footer>
+</body>
+</html>

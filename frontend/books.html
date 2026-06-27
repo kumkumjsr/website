@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #3F51B5;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #303F9F;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #3F51B5, #303F9F);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #3F51B5;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #3F51B5;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>Books Hub</h1>
+    <p>Discover the world of literature, genres, and legendary authors.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#genres">Genres</a>
+    <a href="#authors">Famous Authors</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What are Books?</h2>
+    <p>
+      Books are timeless vessels of knowledge, imagination, and culture. 
+      From ancient manuscripts to modern novels, literature has shaped 
+      societies, preserved history, and inspired generations of readers.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick Book Facts</h2>
+    <ul>
+      <li>The earliest known written stories date back to ancient Mesopotamia.</li>
+      <li>The printing press, invented by Johannes Gutenberg in the 15th century, revolutionized book production.</li>
+      <li>The longest novel ever written is "In Search of Lost Time" by Marcel Proust.</li>
+      <li>Libraries have been cultural centers for centuries, preserving knowledge for future generations.</li>
+      <li>E-books and audiobooks have transformed how people access literature today.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn About Books Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/WRu_-9MBR3I" 
+          title="Books Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/5D6d9t0Xz9Y" 
+          title="Books Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/3p4MZJ6p0gk" 
+          title="Books Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genres Section -->
+  <section id="genres">
+    <h2>Book Genres</h2>
+    <p>
+      Literature spans genres such as fiction, non-fiction, fantasy, mystery, 
+      historical, and poetry. Each genre offers unique perspectives and 
+      storytelling styles that captivate different audiences.
+    </p>
+  </section>
+
+  <!-- Famous Authors Section -->
+  <section id="authors">
+    <h2>Famous Authors</h2>
+    <p>
+      Renowned authors like William Shakespeare, Jane Austen, Leo Tolstoy, 
+      and J.K. Rowling have left indelible marks on literature. 
+      Their works continue to inspire readers and writers across the globe.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Books Hub | Designed for book lovers</p>
+  </footer>
+</body>
+</html>

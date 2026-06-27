@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #9C27B0;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #6A1B9A;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #9C27B0;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #9C27B0;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>Music Hub</h1>
+    <p>Celebrate the art of sound, rhythm, and melody.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#genres">Genres</a>
+    <a href="#musicians">Famous Musicians</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What is Music?</h2>
+    <p>
+      Music is the universal language of humanity. It combines rhythm, melody, 
+      and harmony to evoke emotions, tell stories, and bring people together. 
+      From classical symphonies to modern pop, music reflects culture and creativity.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick Music Facts</h2>
+    <ul>
+      <li>The oldest known musical instruments are flutes made over 40,000 years ago.</li>
+      <li>Beethoven composed some of his greatest works while deaf.</li>
+      <li>Jazz originated in the African-American communities of New Orleans in the early 20th century.</li>
+      <li>The Beatles are one of the best-selling bands in history.</li>
+      <li>Streaming platforms have revolutionized how we listen to music today.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn About Music Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/9xwazD5SyVg" 
+          title="Music Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
+          title="Music Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+          title="Music Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genres Section -->
+  <section id="genres">
+    <h2>Music Genres</h2>
+    <p>
+      Music spans countless genres including classical, jazz, rock, pop, hip-hop, 
+      electronic, and folk. Each genre has unique styles, instruments, and cultural roots.
+    </p>
+  </section>
+
+  <!-- Famous Musicians Section -->
+  <section id="musicians">
+    <h2>Famous Musicians</h2>
+    <p>
+      Iconic musicians like Mozart, Elvis Presley, Bob Marley, and Beyoncé 
+      have left lasting legacies. Their artistry continues to inspire 
+      generations of listeners and performers worldwide.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Music Hub | Designed for music lovers</p>
+  </footer>
+</body>
+</html>

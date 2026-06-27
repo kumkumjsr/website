@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Question Engine</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="main">
+  
+
+<div class="card">
+  
+
+    <header>
+        <h1 class="typehead"></h1>
+        <p>Select your topic and difficulty</p>
+    </header>
+
+        <div class="sections">
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="any">Any Category</option>
+                    
+                    <optgroup label="General">
+                        <option value="9">General Knowledge</option>
+                        <option value="23">History</option>
+                        <option value="22">Geography</option>
+                    </optgroup>
+
+                    <optgroup label="Entertainment">
+                        <option value="11">Film</option>
+                        <option value="12">Music</option>
+                        <option value="10">Books</option>
+                    </optgroup>
+
+                    <optgroup label="Science & Tech">
+                        <option value="18">Computers</option>
+                        <option value="19">Mathematics</option>
+                        <option value="30">Gadgets</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="grouping">
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty">
+                    <option value="any">Any Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <button id="startBtn" class="btn">Generate</button>
+          
+        </div>
+        
+    </div>
+</div>
+</div>
+    <script src="index.js"></script>
+</body>
+</html>

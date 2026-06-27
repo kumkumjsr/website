@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study</title>
+
+<link rel="stylesheet" href="Home.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div style="display: flex; gap: 20px; ">
+<img src="logo.jpg" alt="logo" width="60px" height="40px" style="border-radius: 100%;">
+<h2 style="align-content: left;">Smart Study</h2>
+<img src="" alt="">
+</div>
+<div class="nav-right">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<i class="fas fa-ellipsis-v menu-icon" onclick="openMenu()"></i>
+</div>
+</nav>
+
+<!-- SIDEBAR -->
+<div id="sideMenu">
+<i class="fas fa-arrow-right close-btn" onclick="closeMenu()"></i>
+
+<h3>SUBJECTS</h3>
+<a href="gk.html">GENERAL KNOWLEDGE</a>
+<a href="history.html">HISTORY</a>
+<a href="geo.html">GEOGRAPHY</a>
+<a href="film.html">FILM</a>
+<a href="music.html">MUSIC</a>
+<a href="books.html">BOOKS</a>
+<a href="comp.html">COMPUTER</a>
+<a href="maths.html">MATHEMATICS</a>
+<a href="gadgets.html">GADGETS</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+
+<div class="left">
+<h1 class="typing">Welcome to <span>Smart Study</span></h1>
+
+<p>Test your knowledge and prepare for exams.</p>
+
+<button class="btn magnetic" id="Btns">Start Quiz</button>
+</div>
+
+<div class="right">
+
+<video width="700" height="400" autoplay loop muted playsinline>
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+<h2>About Us</h2>
+
+<p>Smart Study is an interactive quiz platform designed for students.</p>
+<p>Practice questions, revise concepts and test your knowledge anytime.</p>
+<p>Our goal is to make learning simple, fun and effective.</p>
+
+<div class="images">
+<img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b">
+<img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+<img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f">
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<div class="contact-box">
+
+<div class="contact-info">
+<p><i class="fas fa-location-dot"></i> Kolkata, India</p>
+<p><i class="fas fa-envelope"></i> smartstudy@gmail.com</p>
+
+<div class="social">
+<i class="fab fa-instagram"></i>
+<i class="fab fa-facebook"></i>
+<i class="fab fa-twitter"></i>
+</div>
+</div>
+
+<form>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button class="btn">Send</button>
+</form>
+
+</div>
+
+</section>
+
+<!-- JAVASCRIPT -->
+<script>
+
+function openMenu(){
+document.getElementById("sideMenu").style.right="0";
+}
+
+function closeMenu(){
+document.getElementById("sideMenu").style.right="-300px";
+}
+ 
+document.getElementById("Btns").addEventListener("click",()=>{
+window.location.href="Roadmap.html"
+})
+
+/* Magnetic Button */
+const magnet = document.querySelector(".magnetic");
+
+magnet.addEventListener("mousemove",(e)=>{
+const rect = magnet.getBoundingClientRect();
+const x = e.clientX - rect.left - rect.width/2;
+const y = e.clientY - rect.top - rect.height/2;
+
+magnet.style.transform =
+`translate(${x*0.3}px,${y*0.3}px) scale(1.1)`;
+});
+
+magnet.addEventListener("mouseleave",()=>{
+magnet.style.transform="translate(0,0) scale(1)";
+});
+
+</script>
+
+</body>
+</html>

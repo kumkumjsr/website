@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis | Smart Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --success: #22c55e;
+            --warning: #facc15;
+            --danger: #ef4444;
+            --bg: #051b31;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .score-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            margin: 0 auto 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 242, 254, 0.05);
+        }
+
+        .score-circle h1 { font-size: 3rem; margin: 0; color: var(--primary); }
+        .score-circle span { font-size: 0.9rem; opacity: 0.7; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .excellent { background: var(--success); box-shadow: 0 0 15px var(--success); }
+        .average { background: var(--warning); color: #000; box-shadow: 0 0 15px var(--warning); }
+        .improve { background: var(--danger); box-shadow: 0 0 15px var(--danger); }
+
+        .chart-box { margin: 20px 0; height: 220px; }
+
+        .btn-row {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-continue { background: var(--primary); color: var(--bg); }
+        .btn-home { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+    </style>
+</head>
+<body>
+
+    <div class="score-container">
+        <h2 id="greetUser">Performance Analysis</h2>
+        
+        <div class="score-circle">
+            <h1 id="scoreNum">0</h1>
+            <span>Out of 15</span>
+        </div>
+
+        <div id="badge" class="status-badge">Processing...</div>
+
+        <div class="chart-box">
+            <canvas id="scoreChart"></canvas>
+        </div>
+
+        <div class="btn-row">
+            <a href="roadmap.html" class="btn btn-home">Roadmap</a>
+            <a href="leaderboard.html" class="btn btn-continue" onclick="setStep(7)">View Leaderboard</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve data saved by quiz.js
+            const quizData = JSON.parse(localStorage.getItem('quizResults'));
+            const user = localStorage.getItem('loggedInUser') || "Explorer";
+            
+            if (!quizData) {
+                alert("No recent test data found!");
+                window.location.href = "roadmap.html";
+                return;
+            }
+
+            const score = quizData.score;
+            const total = 15;
+            const wrong = total - score;
+
+            document.getElementById('greetUser').innerText = `Great Job, ${user}!`;
+            document.getElementById('scoreNum').innerText = score;
+
+            const badge = document.getElementById('badge');
+
+            // Visual Status logic
+            if (score >= 12) {
+                badge.innerText = "Master Level 🏆";
+                badge.className = "status-badge excellent";
+            } else if (score >= 7) {
+                badge.innerText = "Solid Effort 📈";
+                badge.className = "status-badge average";
+            } else {
+                badge.innerText = "Keep Learning ⚠️";
+                badge.className = "status-badge improve";
+            }
+
+            // Generate the Comparison Chart
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut', // Changed to doughnut for a modern look
+                data: {
+                    labels: ['Correct', 'Incorrect'],
+                    datasets: [{
+                        data: [score, wrong],
+                        backgroundColor: ['#22c55e', '#ef4444'],
+                        borderColor: '#051b31',
+                        borderWidth: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: 'white', padding: 20 }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+
+        function setStep(s) {
+            localStorage.setItem('roadmapStep', s);
+        }
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const quizData = JSON.parse(localStorage.getItem('quizResults'));
+    const user = localStorage.getItem('loggedInUser') || "Student";
+    
+    if (!quizData) {
+        window.location.href = "roadmap.html";
+        return;
+    }
+
+    const score = quizData.score; // Correctly pulls the number
+    const total = 15;
+    const wrong = total - score;
+
+    document.getElementById('greetUser').innerText = `Well done, ${user}!`;
+    document.getElementById('scoreNum').innerText = score;
+
+    const badge = document.getElementById('badge');
+    if (score >= 10) {
+        badge.innerText = "Excellent 🏆";
+        badge.className = "status-badge excellent";
+    } else if (score >= 5) {
+        badge.innerText = "Average 📈";
+        badge.className = "status-badge average";
+    } else {
+        badge.innerText = "Needs Improvement ⚠️";
+        badge.className = "status-badge improve";
+    }
+
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Correct', 'Incorrect'],
+            datasets: [{
+                data: [score, wrong],
+                backgroundColor: ['#22c55e', '#ef4444'],
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, max: 15, ticks: { color: 'white' } },
+                x: { ticks: { color: 'white' } }
+            }
+        }
+    });
+});
+    </script>
+</body>
+</html>

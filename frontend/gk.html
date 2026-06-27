@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>General Knowledge Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Back Arrow Button */
+    .back-arrow {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .back-arrow:hover {
+      background: #2E7D32;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #4CAF50;
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    /* Facts List */
+    .facts ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    .facts li {
+      margin: 10px 0;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video iframe {
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Arrow -->
+  <button class="back-arrow" onclick="history.back()">←</button>
+
+  <!-- Header -->
+  <header>
+    <h1>General Knowledge Hub</h1>
+    <p>Expand your mind with facts, history, science, and more.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#facts">Facts</a>
+    <a href="#videos">Videos</a>
+    <a href="#history">History</a>
+    <a href="#science">Science</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What is General Knowledge?</h2>
+    <p>
+      General knowledge is a broad understanding of the world around us. 
+      It covers topics like history, science, geography, literature, and culture. 
+      Having strong general knowledge helps in competitive exams, interviews, 
+      and everyday conversations.
+    </p>
+  </section>
+
+  <!-- Facts Section -->
+  <section id="facts" class="facts">
+    <h2>Quick Facts</h2>
+    <ul>
+      <li>The Earth revolves around the Sun once every 365 days.</li>
+      <li>The Great Pyramid of Giza is the oldest of the Seven Wonders of the Ancient World.</li>
+      <li>Albert Einstein developed the theory of relativity in the early 20th century.</li>
+      <li>The Amazon rainforest produces 20% of the world's oxygen.</li>
+      <li>India is the world's largest democracy.</li>
+    </ul>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Learn Through Videos</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/9xwazD5SyVg" 
+          title="General Knowledge Video 1" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
+          title="General Knowledge Video 2" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video">
+        <iframe width="360" height="215" 
+          src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+          title="General Knowledge Video 3" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section id="history">
+    <h2>History Highlights</h2>
+    <p>
+      History teaches us about the rise and fall of civilizations, 
+      the struggles for freedom, and the progress of humanity. 
+      From the invention of the wheel to the digital revolution, 
+      history is a record of human achievement and lessons learned.
+    </p>
+  </section>
+
+  <!-- Science Section -->
+  <section id="science">
+    <h2>Science Insights</h2>
+    <p>
+      Science explains the natural world through observation and experimentation. 
+      It has given us electricity, medicine, space exploration, and the internet. 
+      Understanding science helps us innovate and solve global challenges.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 General Knowledge Hub | Designed for learners</p>
+  </footer>
+</body>
+</html>

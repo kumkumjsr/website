@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path | Smart Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+
+    <div class="roadmap-container">
+        <svg class="svg-connector" viewBox="0 0 800 1200">
+            <path id="master-path" d="M 400 50 C 100 150, 100 250, 160 200 S 700 250, 640 350 S 100 450, 240 550 S 700 650, 560 750 S 100 850, 160 950 S 400 1000, 400 1100" />
+            <path class="progress-path" id="dynamic-path" d="M 400 50 C 100 150, 100 250, 160 200 S 700 250, 640 350 S 100 450, 240 550 S 700 650, 560 750 S 100 850, 160 950 S 400 1000, 400 1100" />
+        </svg>
+
+        <div class="step s1" data-step="1">
+            <div class="node"><i class="fas fa-sign-in-alt"></i></div>
+            <div class="label">Smart Study🧠</div>
+        </div> 
+
+        <div class="step s2" data-step="2">
+            <div class="node"><i class="fas fa-user-shield"></i></div>
+            <div class="label">User Login</div>
+        </div>
+
+        <div class="step s3" data-step="3">
+            <div class="node"><i class="fas fa-file-alt"></i></div>
+            <div class="label">Question Detail</div>
+        </div>
+
+        <div class="step s4" data-step="4">
+            <div class="node"><i class="fas fa-play-circle"></i></div>
+            <div class="label">Test Start</div>
+        </div>
+
+        <div class="step s6" data-step="6">
+            <div class="node"><i class="fas fa-chart-line"></i></div>
+            <div class="label">Preview Test</div>
+        </div>
+
+        <div class="step s5" data-step="5">
+            <div class="node"><i class="fas fa-chart-line"></i></div>
+            <div class="label">User Score</div>
+        </div>
+
+        <div class="step s7" data-step="7">
+            <div class="node"><i class="fas fa-trophy"></i></div>
+            <div class="label">Leaderboard</div>
+        </div>
+    </div>
+
+    <div class="nav-panel">
+        <button class="btn" id="prev"><i class="fas fa-arrow-left"></i> Back</button>
+        <button class="btn" id="next">Continue <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const steps = document.querySelectorAll('.step');
+        const path = document.getElementById('dynamic-path');
+        const nextBtn = document.getElementById('next');
+        const prevBtn = document.getElementById('prev');
+
+        // Initial setup
+        let currentStep = parseInt(localStorage.getItem('roadmapStep')) || 1;
+        const totalSteps = 7;
+        const pathLength = path.getTotalLength();
+        path.style.strokeDasharray = pathLength;
+
+        function updateUI() {
+            const icons = ['sign-in-alt', 'user-shield', 'file-alt', 'play-circle', 'clipboard-check', 'chart-line', 'trophy'];
+            
+            steps.forEach((step, idx) => {
+                const sNum = idx + 1;
+                step.classList.remove('active', 'completed');
+                const icon = step.querySelector('i');
+
+                if (sNum < currentStep) {
+                    step.classList.add('completed');
+                    icon.className = 'fas fa-check';
+                } else if (sNum === currentStep) {
+                    step.classList.add('active');
+                    icon.className = `fas fa-${icons[idx]}`;
+                } else {
+                    icon.className = `fas fa-${icons[idx]}`;
+                }
+            });
+
+            // Update SVG Progress
+            const progress = (currentStep - 1) / (totalSteps - 1);
+            path.style.strokeDashoffset = pathLength - (pathLength * progress);
+
+            // Button State
+            prevBtn.disabled = currentStep === 1;
+            nextBtn.disabled = currentStep === totalSteps;
+        }
+
+        // Logic for where each step should take the user
+        function handleNavigation(step) {
+            localStorage.setItem('roadmapStep', step);
+            const routes = {
+                1: "Home.html",
+                2: "Login.html",
+                3: "index.html",
+                4: "quiz.html",
+                5: "score.html",
+                6: "result.html",
+                7: "leaderboard.html"
+            };
+
+            // Small delay for visual effect
+            setTimeout(() => {
+                if (routes[step]) window.location.href = routes[step];
+            }, 400);
+        }
+
+        // Click on specific nodes
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                const stepNum = parseInt(step.getAttribute('data-step'));
+                currentStep = stepNum;
+                updateUI();
+                handleNavigation(stepNum);
+            });
+        });
+
+        // Navigation Buttons
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+                handleNavigation(currentStep);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+                handleNavigation(currentStep);
+            }
+        });
+
+        updateUI();
+    });
+    </script>
+</body>
+</html>
